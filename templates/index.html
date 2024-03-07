@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            transition: 0.2s ease-in-out;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #120018;
+            color: #fff;
+            min-width: 100vw;
+            min-height: 100vh;
+        }
+
+        #title {
+            margin: 100px auto 20px auto;
+            padding: 0 20px;
+            border-bottom: 5px solid #fff;
+        }
+
+        .input-form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .input-form textarea{
+            width: 400px;
+            height: 150px;
+            font-size: 1.2rem;
+            outline: none;
+            padding: 5px 10px;
+        }
+
+        .input-form button{
+            width: 100px;
+            margin: 10px auto;
+            height: 50px;
+            width: 200px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .input-form button:hover{
+            background-color: #ff0055;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">Sentiment Analysis</h1>
+
+        <form class="input-form" action="/predict" method="post">
+            <textarea name="text" id="" cols="30" rows="10" placeholder="Put your comment here"></textarea>
+            <button type="submit">GET CENTIMENT</button>
+        </form>
+
+        <div class="result">
+            {% if prediction is defined %}
+            {% if prediction == 1 %}
+            <h2>Positive Comment</h2>
+
+            {% else %}
+            <h2>Negative Comment</h2>
+
+            {% endif %}
+            {%else%}
+            <h2>Enter the comment</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
